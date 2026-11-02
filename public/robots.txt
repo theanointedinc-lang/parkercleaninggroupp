@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.parkercleaninggroup.co.uk/sitemap.xml

@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --brand-navy: #0A1D37;
+    --brand-navy-light: #0E2A4E;
+    --brand-blue: #1E56A0;
+    --brand-accent: #2563EB;
+    --brand-sky: #0EA5E9;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Custom utility classes */
+.corporate-gradient {
+  background: linear-gradient(135deg, #0A1D37 0%, #0E2A4E 60%, #153E75 100%);
+}
+
+.subtle-mesh {
+  background-color: #F8FAFC;
+  background-image: radial-gradient(at 0% 0%, rgba(30, 86, 160, 0.04) 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.04) 0px, transparent 50%);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
