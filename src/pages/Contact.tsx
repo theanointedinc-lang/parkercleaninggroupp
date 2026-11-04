@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { 
   MapPin, 
-  Mail, 
   Phone, 
   Clock, 
   ShieldCheck, 
   ExternalLink, 
-  AlertCircle, 
   Sparkles, 
-  Building2 
+  Building2,
+  PhoneCall
 } from 'lucide-react';
 import { PageHero } from '../components/PageHero';
-import { QuoteForm } from '../components/QuoteForm';
 import { GoogleMap } from '../components/GoogleMap';
 import { BUSINESS_INFO } from '../data/content';
 
@@ -29,8 +27,8 @@ export const Contact: React.FC = () => {
         title="Let's Talk About Your Commercial Cleaning Requirements"
         subtitle="Get in touch with Parker Cleaning Group to discuss your premises, cleaning requirements, and quotation."
         heroImage="/images/contact-hero.jpg"
-        primaryCtaText="Complete Quotation Form"
-        primaryCtaLink="#quote-form"
+        primaryCtaText="Call Us Now"
+        primaryCtaLink={BUSINESS_INFO.phoneTel}
         secondaryCtaText="Explore Our Services"
         secondaryCtaLink="/services"
       />
@@ -40,7 +38,7 @@ export const Contact: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            {/* Left Column: Business Details, Development Placeholders & Facebook (5 cols) */}
+            {/* Left Column: Business Details & Facebook */}
             <div className="lg:col-span-5 space-y-8">
               <div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-blue-50 text-blue-700 border border-blue-100 mb-3">
@@ -55,7 +53,7 @@ export const Contact: React.FC = () => {
                 </p>
               </div>
 
-              {/* Verified Information & Strict Development Placeholders */}
+              {/* Contact Details Card */}
               <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-xs space-y-5">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 pb-3 border-b border-slate-100 flex items-center justify-between">
                   <span>Business Contact Directory</span>
@@ -82,35 +80,6 @@ export const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Registered Address Verification Status */}
-                <div className="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs text-amber-900 space-y-1">
-                  <div className="flex items-center gap-1.5 font-bold">
-                    <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
-                    <span>Registered Business Address Verification:</span>
-                  </div>
-                  <p className="text-[11px] text-amber-800 leading-relaxed">
-                    {BUSINESS_INFO.addressPlaceholder}
-                  </p>
-                </div>
-
-                {/* Commercial Quotations */}
-                <div className="flex items-start gap-3.5 pt-2">
-                  <div className="p-2 rounded-xl bg-blue-50 text-blue-600 shrink-0 mt-0.5">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wide block">
-                      Quotation Requests
-                    </span>
-                    <span className="text-sm font-semibold text-slate-900 block mt-0.5">
-                      Submit Online Quotation Form
-                    </span>
-                    <p className="text-xs text-slate-500 mt-1">
-                      Enquiries submitted below are processed for tailored proposals.
-                    </p>
-                  </div>
-                </div>
-
                 {/* Telephone Details */}
                 <div className="flex items-start gap-3.5 pt-2">
                   <div className="p-2 rounded-xl bg-blue-50 text-blue-600 shrink-0 mt-0.5">
@@ -120,11 +89,15 @@ export const Contact: React.FC = () => {
                     <span className="text-xs font-bold text-slate-500 uppercase tracking-wide block">
                       Telephone Enquiries
                     </span>
-                    <span className="text-sm font-semibold text-slate-900 block mt-0.5">
+                    <a
+                      href={BUSINESS_INFO.phoneTel}
+                      className="text-sm font-semibold text-blue-700 hover:text-blue-900 block mt-0.5 hover:underline"
+                      aria-label={`Call Parker Cleaning Group at ${BUSINESS_INFO.phoneDisplay}`}
+                    >
                       {BUSINESS_INFO.phoneDisplay}
-                    </span>
+                    </a>
                     <p className="text-xs text-slate-500 mt-1">
-                      Request a telephone callback directly on the quotation form.
+                      Call us directly to discuss your commercial cleaning requirements.
                     </p>
                   </div>
                 </div>
@@ -187,7 +160,7 @@ export const Contact: React.FC = () => {
                 </p>
               </div>
 
-              {/* Section 4: Location Map Preview */}
+              {/* Location Map Preview */}
               <div className="space-y-3">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-blue-600" />
@@ -197,9 +170,57 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Free Quote Form (7 cols) */}
-            <div id="quote-form" className="lg:col-span-7 scroll-mt-24">
-              <QuoteForm />
+            {/* Right Column: Call to Action */}
+            <div className="lg:col-span-7">
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
+                {/* Card Header */}
+                <div className="bg-gradient-to-r from-slate-900 to-blue-950 p-8 sm:p-10 text-white">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-800/50 border border-blue-400/30 text-blue-200 text-xs font-semibold mb-4">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>No Obligation — Free Quotation</span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold font-heading">
+                    Speak Directly with Our Team
+                  </h3>
+                  <p className="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Call us to discuss your commercial facility, cleaning requirements, and to receive a tailored quotation from our Yorkshire commercial cleaning team.
+                  </p>
+                </div>
+
+                {/* Call CTA */}
+                <div className="p-8 sm:p-10 space-y-6">
+                  <a
+                    href={BUSINESS_INFO.phoneTel}
+                    className="flex items-center justify-center gap-4 w-full py-6 px-8 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xl transition-all shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 group"
+                    aria-label={`Call Parker Cleaning Group at ${BUSINESS_INFO.phoneDisplay}`}
+                  >
+                    <PhoneCall className="w-7 h-7 group-hover:scale-110 transition-transform" />
+                    <span>{BUSINESS_INFO.phoneDisplay}</span>
+                  </a>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                    <div className="text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                      <ShieldCheck className="w-6 h-6 text-emerald-600 mx-auto mb-2" />
+                      <p className="text-xs font-semibold text-slate-700">Fully Insured</p>
+                      <p className="text-xs text-slate-500 mt-0.5">Commercial coverage</p>
+                    </div>
+                    <div className="text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                      <MapPin className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+                      <p className="text-xs font-semibold text-slate-700">Yorkshire Wide</p>
+                      <p className="text-xs text-slate-500 mt-0.5">All Yorkshire postcodes</p>
+                    </div>
+                    <div className="text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                      <Clock className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+                      <p className="text-xs font-semibold text-slate-700">Flexible Hours</p>
+                      <p className="text-xs text-slate-500 mt-0.5">7 days a week</p>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 border-t border-slate-100 text-center text-xs text-slate-500 leading-relaxed">
+                    Strictly commercial enquiries. Our team will assess your premises and provide a no-obligation tailored proposal.
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -214,11 +235,18 @@ export const Contact: React.FC = () => {
             <span>Commercial Cleaning Yorkshire</span>
           </div>
           <h2 className="text-3xl font-bold text-slate-900 font-heading">
-            Need a Quick Clarification on Your Premises?
+            Ready to Discuss Your Premises?
           </h2>
           <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Submit your basic facility details above, and our Yorkshire commercial cleaning team will get back to you promptly with an itemised proposal.
+            Our Yorkshire commercial cleaning team is ready to take your call and discuss a tailored cleaning solution for your business.
           </p>
+          <a
+            href={BUSINESS_INFO.phoneTel}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-base transition-all shadow-lg mt-2"
+          >
+            <PhoneCall className="w-5 h-5" />
+            Call {BUSINESS_INFO.phoneDisplay}
+          </a>
         </div>
       </section>
     </div>

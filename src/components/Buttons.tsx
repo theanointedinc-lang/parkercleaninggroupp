@@ -25,6 +25,15 @@ export const PrimaryButton: React.FC<ButtonProps> = ({
     'inline-flex items-center justify-center font-semibold text-sm sm:text-base px-6 py-3.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed bg-blue-600 hover:bg-blue-700 text-white';
 
   if (to) {
+    const isExternal = to.startsWith('http') || to.startsWith('tel:') || to.startsWith('mailto:');
+    if (isExternal) {
+      return (
+        <a href={to} className={`${baseClasses} ${className}`}>
+          <span>{children}</span>
+          {showArrow && <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />}
+        </a>
+      );
+    }
     return (
       <Link to={to} className={`${baseClasses} ${className}`}>
         <span>{children}</span>
